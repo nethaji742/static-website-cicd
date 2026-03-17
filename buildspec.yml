@@ -4,10 +4,14 @@ phases:
   build:
     commands:
       - echo "Build started"
+
   post_build:
     commands:
       - echo "Deploying to S3"
-      - aws s3 sync . s3://nethajisfdemo --delete
+      - aws s3 sync . s3://nethajisfdemo \
+          --delete \
+          --exclude ".git/*" \
+          --exclude "buildspec.yml"
 
 artifacts:
   files:
