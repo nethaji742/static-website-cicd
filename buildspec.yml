@@ -3,15 +3,12 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Build started"
+      - echo "No build needed for static site"
 
   post_build:
     commands:
       - echo "Deploying to S3"
-      - aws s3 sync . s3://nethajisfdemo \
-          --delete \
-          --exclude ".git/*" \
-          --exclude "buildspec.yml"
+      - aws s3 sync . s3://nethajisfdemo --delete --exclude ".git/*" --exclude "buildspec.yml"
 
 artifacts:
   files:
